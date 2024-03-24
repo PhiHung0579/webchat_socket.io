@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phihung</title>
+</head>
+
+<body>
+    <h1>lỏoooooooooooooooooooo</h1>
+    <p>count:
+        <span id="value-count">
+            1
+        </span>
+    </p>
+    <button id="btn-increment">
+        +1
+    </button>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+
+        //yêu cầu server kết nối với client 
+        const socket = io();
+        //nhận lại event từ servẻr về client 
+        socket.on("send count server to client", (count) => {
+           document.getElementById("value-count").innerHTML=count;
+        });
+        socket.on("send messages server to client", (messages) => {
+            console.log("đã nhận được messages " + messages);
+        });
+
+        document.getElementById("btn-increment").addEventListener("click", () => {
+            //gửi sự kiện từ client lên server
+            socket.emit("send increment client to server")
+        })
+    </script>
+</body>
+
+</html>
