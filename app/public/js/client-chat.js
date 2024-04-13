@@ -84,5 +84,5 @@ socket.on("send listUser from to server to client", (userList) => {
     })
     document.getElementById("app__list-user--content").innerHTML = contentHtml;
 })
-
+//note from branch phihung
 document.getElementById("app__title").innerHTML = room;
